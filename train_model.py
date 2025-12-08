@@ -17,7 +17,6 @@ if not os.path.exists('spam.csv'):
 try:
     df = pd.read_csv('spam.csv', encoding='latin-1')
 except:
-    # If latin-1 fails, try standard utf-8
     df = pd.read_csv('spam.csv', encoding='utf-8')
 
 
@@ -26,18 +25,12 @@ if 'v1' in df.columns and 'v2' in df.columns:
 
 
 df['label_num'] = df['label'].map({'spam': 1, 'ham': 0})
-
 print("Data Loaded Successfully!")
-
 
 vectorizer = TfidfVectorizer(stop_words='english')
 
-
 X = vectorizer.fit_transform(df['message'])
-
-
 y = df['label_num']
-
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -58,5 +51,6 @@ with open('spam_model.pkl', 'wb') as f:
 
 with open('vectorizer.pkl', 'wb') as f:
     pickle.dump(vectorizer, f)
+
 
 print("Success! 'spam_model.pkl' and 'vectorizer.pkl' are saved.")

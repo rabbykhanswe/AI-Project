@@ -21,6 +21,7 @@ Test It:
 
 Open your browser and go to http://127.0.0.1:5000.
 
-Type "Win a free iPhone now" -> Click Check -> Result: SPAM 🚨
+Type "Win a free iPhone now" -> Click Check -> Result: SPAM
 
-Type "Let's meet for lunch" -> Click Check -> Result: Not Spam (Safe) ✅
+
+Type "Let's meet for lunch" -> Click Check -> Result: Not Spam (Safe)

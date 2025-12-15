@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam E-mail Detector</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <i class="fas fa-shield-alt"></i>
+                Spam E-mail Detector
+            </div>
+            <ul class="nav-links">
+                <li><a onclick="showPage(event, 'detector')" class="nav-link active">Detector</a></li>
+                <li><a onclick="showPage(event, 'course')" class="nav-link">Course</a></li>
+                <li><a onclick="showPage(event, 'team')" class="nav-link">Team</a></li>
+                <li><a onclick="showPage(event, 'about')" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-star"></i> Team Thunder Powered Email Protection
+            </div>
+            <h1>Welcome to Spam E-mail Detector</h1>
+            <p>Protect your inbox with advanced machine learning technology</p>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="page-section active" id="detector-page">
+            <div class="card">
+                <h1>Spam E-mail Detector</h1>
+                <p>Paste your email to analyze</p>
+
+                <form action="/predict" method="post">
+                    <textarea name="email_content" placeholder="Type or paste email content here..." required>{{ email_content }}</textarea>
+                    <button type="submit">Analyze</button>
+                </form>
+
+                {% if prediction_text %}
+                <div class="result-box">
+                    <div class="result-title">
+                        {% if prediction_text == 'SPAM' %}
+                        <span class="spam">Result: {{ prediction_text }}</span>
+                        {% else %}
+                        <span class="not-spam">Result: {{ prediction_text }}</span>
+                        {% endif %}
+                    </div>
+                    <hr style="margin: 6px 0; border: none; border-top: 1px solid #ddd;">
+                    
+                    <div class="feature-item">
+                        <span class="label">Risk:</span> {{ probability }}%
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="label">Explanation:</span> {{ trigger }}
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="label">Reply:</span> {{ reply }}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="page-section" id="course-page">
+            <div class="description-section">
+                <h2>Course Information</h2>
+                
+                <div class="course-grid">
+                    <div class="teacher-card">
+                        <div class="teacher-avatar"><img src="Honourable Sir.jpg"></div>
+                        <h3>Mohseu Minhaj Niloy</h3>
+                        <div>
+                            <div class="info-label">Designation: Lecturer</div>
+                        </div>
+                        <div>
+                            <div class="info-label">Department of Software Engineering</div>
+                        </div>
+                        <div>
+                            <div class="info-label">Daffodil International University</div>
+                        </div>
+                    </div>
+
+                    <div class="teacher-card">
+                        <h3 style="color: #667eea;">Course Details</h3>
+                        <div>
+                            <div class="info-label">Course Name: Artificial Intelligence Lab</div>
+                        </div>
+                        <div>
+                            <div class="info-label">Course Code: SE332</div>
+                        </div>
+                        <div>
+                            <div class="info-label">AI Project Name: Spam Email Detector</div>
+                        </div>
+                        <div>
+                            <div class="info-label">Project Date: Dec 15, 2025</div>
+                            <div class="info-value"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-section" id="team-page">
+            <div class="description-section">
+                <h2>Team Members</h2>
+                
+                <div class="team-grid">
+                    
+                    <div class="team-member">
+                        <div class="member-avatar"><img src="Rabby.jpg"></div>
+                        <h3>Md. Rabby Khan<br>(Team Leader)</h3>
+                        <div>
+                            <div class="info-label">ID : 0242310005341478</div>
+                        </div>
+                        <div>
+                            <div class="info-label">Batch: SWE - 40</div>
+                        </div>
+                        <div>
+                            <div class="info-label">Section: G</div>
+                        </div>
+                        <div>
+                            <div class="info-label">Software Engineering Department</div>
+                        </div>
+                        <div>
+                            <div class="info-label">Daffodil International University</div>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-avatar"><img src="junayed.jpeg"></div>
+                        <h3>Junayet Mithu<br>(Model Trainer)</h3>
+                        <div>
+                            <div class="info-label">ID : 0242310005341400</div>
+                        </div>
+                        <div>
+                            <div class="info-label">Batch: SWE - 40</div>
+                        </div>
+                        <div>
+                            <div class="info-label">Section: G</div>
+                        </div>
+                        <div>
+                            <div class="info-label">Software Engineering Department</div>
+                        </div>
+                        <div>
+                            <div class="info-label">Daffodil International University</div>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-avatar"><img src="fardin.jpeg"></div>
+                        <h3>Fardin Hossain<br>(Fronted Designer)</h3>
+                        <div>
+                            <div class="info-label">ID : 0242310005341393</div>
+                        </div>
+                        <div>
+                            <div class="info-label">Batch: SWE - 40</div>
+                        </div>
+                        <div>
+                            <div class="info-label">Section: G</div>
+                        </div>
+                        <div>
+                            <div class="info-label">Software Engineering Department</div>
+                        </div>
+                        <div>
+                            <div class="info-label">Daffodil International University</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="page-section" id="about-page">
+            <div class="description-section">
+                <h2>About Email Spam Detector</h2>
+                <p>Our AI-powered spam detection system analyzes emails in real-time to identify spam using advanced machine learning.</p>
+                
+                <h3 style="color: #2c3e50; margin-top: 10px; margin-bottom: 8px; font-size: 14px;">Why Choose Us?</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>AI-Powered</h3>
+                        <p>Advanced ML</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Real-Time</h3>
+                        <p>Instant results</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Risk Score</h3>
+                        <p>Metrics</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Smart</h3>
+                        <p>Analysis</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-lock"></i>
+                        <h3>Secure</h3>
+                        <p>Safe & private</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-headset"></i>
+                        <h3>Support</h3>
+                        <p>24/7 Help</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-laugh"></i>
+                        <h3>Funny Reply</h3>
+                        <p>Humorous auto-replies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Team Thunder. Protecting your inbox with intelligent technology.</p>
+    </footer>
+
+    <script>
+        function showPage(event, pageId) {
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => page.classList.remove('active'));
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            const selectedPage = document.getElementById(pageId + '-page');
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+            }
+
+            event.target.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
